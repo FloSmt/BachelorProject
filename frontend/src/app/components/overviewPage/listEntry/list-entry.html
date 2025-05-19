@@ -1,0 +1,6 @@
+<div class="list-entry" [routerLink]="'article/' + article().id">
+  <p>{{ article().id }}</p>
+  <p>{{ article().title }}</p>
+  <p>{{ article().author }}</p>
+  <p>{{ getDateString(article().createdAt)}}</p>
+</div>

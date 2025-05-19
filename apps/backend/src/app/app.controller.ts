@@ -1,4 +1,4 @@
-import {Controller, Get, Param} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -12,9 +12,7 @@ export class AppController {
 
   @Get('articles/:id')
   getArticleById(@Param('id') id: number) {
-    const article = this.appService.getArticleById(id);
-    console.log(article);
-    return article;
+    return this.appService.getArticleById(id);
   }
 
   @Get('dummyfill/:amount')

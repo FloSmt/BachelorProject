@@ -6,25 +6,26 @@ export class AppService {
 
   articles: Article[] = [];
 
-  getArticles(): Article[] {
-    return this.articles;
+  getArticles(): Omit<Article, "imageUrl">[] {
+    return this.articles.map(({ imageUrl, ...rest }) => rest);
   }
 
   getArticleById(id: number): Article | undefined {
     return this.articles.find((article) => article.id == id);
   }
 
-  dummyFill(amount: number): Article[] {
+  dummyFill(amount: number) {
     for (let i = 0; i < amount; i++) {
       const articleNumber = this.articles.length;
+      const randomImageNr = Math.floor(Math.random() * 4) + 1;
       this.articles.push(
         new Article(`Article ${articleNumber}`,
           `This is the content of article ${articleNumber}`,
           new Date(), `Author ${articleNumber}`,
-          this.getImageAsBase64(`../../apps/backend/assets/images/image1.jpg`)),
+          this.getImageAsBase64(`../../apps/backend/assets/images/image${randomImageNr}.jpg`)),
       );
     }
-    return this.articles;
+    return;
   }
 
   getImageAsBase64(imagePath: string): string {

@@ -1,0 +1,14 @@
+<h1>Artikel Übersicht</h1>
+
+<div class="table">
+  <div class="headers">
+    <p>Artikelnummer</p>
+    <p>Bezeichnung</p>
+    <p>Author</p>
+    <p>Erstellt am</p>
+  </div>
+
+  @for (article of articles; track article) {
+    <app-list-entry [article]="article"></app-list-entry>
+  }
+</div>
