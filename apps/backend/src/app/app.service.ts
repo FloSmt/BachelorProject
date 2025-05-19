@@ -21,7 +21,15 @@ export class AppService {
       this.articles.push(
         new Article(`Article ${articleNumber}`,
           `This is the content of article ${articleNumber}`,
-          new Date(), `Author ${articleNumber}`,
+          new Date(),
+          {
+            username: `user${articleNumber}`,
+            firstname: 'John',
+            lastname: 'Doe',
+            email: 'john.doe@email.com',
+            bio: 'This is a short bio',
+            id: articleNumber,
+          },
           this.getImageAsBase64(`../../apps/backend/assets/images/image${randomImageNr}.jpg`)),
       );
     }
