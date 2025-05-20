@@ -1,38 +1,21 @@
 import { Injectable } from '@angular/core';
 import {Article} from "../objects/article";
+import {firstValueFrom} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
+  constructor(private http: HttpClient) {
+  }
+
   async loadArticles(page: number): Promise<Article[]> {
-    return fetch('http://localhost:3000/api/articles/page/' + page)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => data as Article[])
-      .catch(error => {
-        console.error('Error fetching articles:', error);
-        throw error;
-      });
+    return firstValueFrom(this.http.get<Article[]>('http://localhost:3000/api/articles/page/' + page));
   }
 
   async loadArticle(articleId: number): Promise<Article> {
-    return fetch('http://localhost:3000/api/articles/' + articleId)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => data as Article)
-      .catch(error => {
-        console.error('Error fetching articles:', error);
-        throw error;
-      });
+    return firstValueFrom(this.http.get<Article>('http://localhost:3000/api/articles/' + articleId));
   }
 }
