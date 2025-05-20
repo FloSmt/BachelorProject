@@ -1,14 +1,13 @@
 import { Route } from '@angular/router';
-import {OverviewPageComponent} from "./components/overviewPage/overview-page";
-import {ArticleDetailsPageComponent} from "./components/articleDetailsPage/article-details-page";
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    component: OverviewPageComponent,
+    loadComponent: () => import('./components/overviewPage/overview-page').then(m => m.OverviewPageComponent)
+
   },
   {
     path: 'article/:id',
-    component: ArticleDetailsPageComponent
+    loadComponent: () => import('./components/articleDetailsPage/article-details-page').then(m => m.ArticleDetailsPageComponent)
   }
 ];

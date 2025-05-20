@@ -8,7 +8,7 @@
     <p>Erstellt am</p>
   </div>
 
-  @for (article of articles; track article) {
+  @for (article of articles; track article; let last = $last) {
     <app-list-entry [article]="article"></app-list-entry>
   }
 </div>

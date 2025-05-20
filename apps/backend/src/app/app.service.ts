@@ -6,8 +6,11 @@ export class AppService {
 
   articles: Article[] = [];
 
-  getArticles(): Omit<Article, "imageUrl">[] {
-    return this.articles.map(({ imageUrl, ...rest }) => rest);
+  getArticles(page: number): Omit<Article, "imageUrl">[] {
+    const pageSize = 20;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return this.articles.slice(startIndex, endIndex).map(({ imageUrl, ...rest }) => rest);
   }
 
   getArticleById(id: number): Article | undefined {

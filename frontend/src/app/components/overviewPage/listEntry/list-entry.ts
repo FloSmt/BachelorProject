@@ -1,4 +1,4 @@
-import {Component, input, Input} from '@angular/core';
+import {Component, ElementRef, input, Input} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {Article} from "../../../objects/article";
 
@@ -11,6 +11,8 @@ import {Article} from "../../../objects/article";
 })
 export class ListEntryComponent {
   article = input.required<Article>();
+
+  constructor(public elementRef: ElementRef) {}
 
   getDateString(date: any): string {
     const options: Intl.DateTimeFormatOptions = {

@@ -6,10 +6,8 @@ import {Article} from "../objects/article";
 })
 export class ArticleService {
 
-  constructor() { }
-
-  async loadArticles(): Promise<Article[]> {
-    return fetch('http://localhost:3000/api/articles')
+  async loadArticles(page: number): Promise<Article[]> {
+    return fetch('http://localhost:3000/api/articles/page/' + page)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
