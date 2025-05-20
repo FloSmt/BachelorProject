@@ -22,7 +22,12 @@
           }
         ],
         "styles": ["frontend/src/styles.css"],
-        "scripts": []
+        "scripts": [],
+        "server": "frontend/src/main.server.ts",
+        "ssr": {
+          "entry": "frontend/src/server.ts"
+        },
+        "outputMode": "server"
       },
       "configurations": {
         "production": {
