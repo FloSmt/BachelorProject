@@ -6,8 +6,12 @@ export class AppService {
 
   articles: Article[] = [];
 
-  getArticles(): Omit<Article, "imageUrl">[] {
+  getArticlesWithoutImageUrl(): Omit<Article, "imageUrl">[] {
     return this.articles.map(({ imageUrl, ...rest }) => rest);
+  }
+
+  getArticles(): Article[] {
+    return this.articles;
   }
 
   getArticleById(id: number): Article | undefined {

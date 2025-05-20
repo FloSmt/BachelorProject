@@ -7,7 +7,7 @@ export class AppController {
 
   @Get('articles')
   getArticles() {
-    return this.appService.getArticles();
+    return this.appService.getArticlesWithoutImageUrl();
   }
 
   @Get('articles/:id')
