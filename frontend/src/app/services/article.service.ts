@@ -25,9 +25,6 @@ export class ArticleService {
           }
         }
       `,
-      context: {
-        uri: 'http://localhost:3000/graphql',
-      }
     }).valueChanges.pipe(map((result: any) => result.data.articles as Article[])))
   }
 
@@ -38,6 +35,7 @@ export class ArticleService {
           article(id: "${articleId}") {
             id
             title
+            text
             imageUrl
           }
         }
